@@ -30,50 +30,85 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StartForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.searchGroupBox = new System.Windows.Forms.GroupBox();
-            this.searchItemLable = new System.Windows.Forms.Label();
-            this.searchItemTextBox = new System.Windows.Forms.TextBox();
+            this.searchComboBox = new System.Windows.Forms.ComboBox();
             this.searchItemButton = new System.Windows.Forms.Button();
-            this.similarCheckBox = new System.Windows.Forms.CheckBox();
+            this.searchItemTextBox = new System.Windows.Forms.TextBox();
+            this.searchItemLable = new System.Windows.Forms.Label();
             this.itemBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
+            this.enwordlistBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.eng_dict_ds = new Eng_Dictionary.Datasets.eng_dict_ds();
+            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
-            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.itemDataGridView = new System.Windows.Forms.DataGridView();
-            this.eng_dict_ds = new Eng_Dictionary.Datasets.eng_dict_ds();
-            this.enwordlistBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.en_word_listTableAdapter = new Eng_Dictionary.Datasets.eng_dict_dsTableAdapters.en_word_listTableAdapter();
             this.wordDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.wordtypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.definitionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.en_word_listTableAdapter = new Eng_Dictionary.Datasets.eng_dict_dsTableAdapters.en_word_listTableAdapter();
+            this.waitLable = new System.Windows.Forms.Label();
             this.searchGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.itemBindingNavigator)).BeginInit();
             this.itemBindingNavigator.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.itemDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.eng_dict_ds)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.enwordlistBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.eng_dict_ds)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itemDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // searchGroupBox
             // 
-            this.searchGroupBox.Controls.Add(this.similarCheckBox);
+            this.searchGroupBox.Controls.Add(this.searchComboBox);
             this.searchGroupBox.Controls.Add(this.searchItemButton);
             this.searchGroupBox.Controls.Add(this.searchItemTextBox);
             this.searchGroupBox.Controls.Add(this.searchItemLable);
             this.searchGroupBox.Location = new System.Drawing.Point(12, 32);
             this.searchGroupBox.Name = "searchGroupBox";
-            this.searchGroupBox.Size = new System.Drawing.Size(531, 115);
+            this.searchGroupBox.Size = new System.Drawing.Size(672, 115);
             this.searchGroupBox.TabIndex = 0;
             this.searchGroupBox.TabStop = false;
             this.searchGroupBox.Text = "Search Information";
+            // 
+            // searchComboBox
+            // 
+            this.searchComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.searchComboBox.FormattingEnabled = true;
+            this.searchComboBox.Items.AddRange(new object[] {
+            "Equals",
+            "Starts with",
+            "Ends with",
+            "Contains"});
+            this.searchComboBox.Location = new System.Drawing.Point(132, 38);
+            this.searchComboBox.Name = "searchComboBox";
+            this.searchComboBox.Size = new System.Drawing.Size(121, 23);
+            this.searchComboBox.TabIndex = 2;
+            // 
+            // searchItemButton
+            // 
+            this.searchItemButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.searchItemButton.Image = global::Eng_Dictionary.Properties.Resources.search_memo;
+            this.searchItemButton.Location = new System.Drawing.Point(557, 29);
+            this.searchItemButton.Name = "searchItemButton";
+            this.searchItemButton.Size = new System.Drawing.Size(94, 40);
+            this.searchItemButton.TabIndex = 4;
+            this.searchItemButton.Text = "Search";
+            this.searchItemButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.searchItemButton.UseVisualStyleBackColor = true;
+            this.searchItemButton.Click += new System.EventHandler(this.SearchItemButton_Click);
+            // 
+            // searchItemTextBox
+            // 
+            this.searchItemTextBox.Location = new System.Drawing.Point(261, 39);
+            this.searchItemTextBox.Name = "searchItemTextBox";
+            this.searchItemTextBox.Size = new System.Drawing.Size(290, 21);
+            this.searchItemTextBox.TabIndex = 3;
             // 
             // searchItemLable
             // 
@@ -83,36 +118,6 @@
             this.searchItemLable.TabIndex = 0;
             this.searchItemLable.Text = "Search by";
             this.searchItemLable.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // searchItemTextBox
-            // 
-            this.searchItemTextBox.Location = new System.Drawing.Point(125, 37);
-            this.searchItemTextBox.Name = "searchItemTextBox";
-            this.searchItemTextBox.Size = new System.Drawing.Size(290, 21);
-            this.searchItemTextBox.TabIndex = 1;
-            // 
-            // searchItemButton
-            // 
-            this.searchItemButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.searchItemButton.Image = global::Eng_Dictionary.Properties.Resources.search_memo;
-            this.searchItemButton.Location = new System.Drawing.Point(421, 27);
-            this.searchItemButton.Name = "searchItemButton";
-            this.searchItemButton.Size = new System.Drawing.Size(94, 40);
-            this.searchItemButton.TabIndex = 2;
-            this.searchItemButton.Text = "Search";
-            this.searchItemButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.searchItemButton.UseVisualStyleBackColor = true;
-            // 
-            // similarCheckBox
-            // 
-            this.similarCheckBox.AutoSize = true;
-            this.similarCheckBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.similarCheckBox.Location = new System.Drawing.Point(125, 68);
-            this.similarCheckBox.Name = "similarCheckBox";
-            this.similarCheckBox.Size = new System.Drawing.Size(101, 19);
-            this.similarCheckBox.TabIndex = 3;
-            this.similarCheckBox.Text = "Similar words";
-            this.similarCheckBox.UseVisualStyleBackColor = true;
             // 
             // itemBindingNavigator
             // 
@@ -138,9 +143,26 @@
             this.itemBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.itemBindingNavigator.Name = "itemBindingNavigator";
             this.itemBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.itemBindingNavigator.Size = new System.Drawing.Size(650, 25);
+            this.itemBindingNavigator.Size = new System.Drawing.Size(699, 25);
             this.itemBindingNavigator.TabIndex = 1;
             this.itemBindingNavigator.Text = "bindingNavigator1";
+            // 
+            // enwordlistBindingSource
+            // 
+            this.enwordlistBindingSource.DataMember = "en_word_list";
+            this.enwordlistBindingSource.DataSource = this.eng_dict_ds;
+            // 
+            // eng_dict_ds
+            // 
+            this.eng_dict_ds.DataSetName = "eng_dict_ds";
+            this.eng_dict_ds.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // bindingNavigatorCountItem
+            // 
+            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
+            this.bindingNavigatorCountItem.Text = "of {0}";
+            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
             // 
             // bindingNavigatorMoveFirstItem
             // 
@@ -174,16 +196,9 @@
             this.bindingNavigatorPositionItem.Text = "0";
             this.bindingNavigatorPositionItem.ToolTipText = "Current position";
             // 
-            // bindingNavigatorCountItem
-            // 
-            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
-            this.bindingNavigatorCountItem.Text = "of {0}";
-            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
-            // 
             // bindingNavigatorSeparator1
             // 
-            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
             this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // bindingNavigatorMoveNextItem
@@ -206,7 +221,7 @@
             // 
             // bindingNavigatorSeparator2
             // 
-            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
             this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
             // itemDataGridView
@@ -214,8 +229,8 @@
             this.itemDataGridView.AllowUserToAddRows = false;
             this.itemDataGridView.AllowUserToDeleteRows = false;
             this.itemDataGridView.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.itemDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.itemDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.itemDataGridView.AutoGenerateColumns = false;
             this.itemDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
             this.itemDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -229,22 +244,8 @@
             this.itemDataGridView.ReadOnly = true;
             this.itemDataGridView.RowHeadersWidth = 25;
             this.itemDataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.itemDataGridView.Size = new System.Drawing.Size(625, 299);
+            this.itemDataGridView.Size = new System.Drawing.Size(671, 299);
             this.itemDataGridView.TabIndex = 2;
-            // 
-            // eng_dict_ds
-            // 
-            this.eng_dict_ds.DataSetName = "eng_dict_ds";
-            this.eng_dict_ds.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // enwordlistBindingSource
-            // 
-            this.enwordlistBindingSource.DataMember = "en_word_list";
-            this.enwordlistBindingSource.DataSource = this.eng_dict_ds;
-            // 
-            // en_word_listTableAdapter
-            // 
-            this.en_word_listTableAdapter.ClearBeforeFill = true;
             // 
             // wordDataGridViewTextBoxColumn
             // 
@@ -264,17 +265,34 @@
             // 
             this.definitionDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.definitionDataGridViewTextBoxColumn.DataPropertyName = "definition";
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.definitionDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.definitionDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
             this.definitionDataGridViewTextBoxColumn.HeaderText = "Definition";
             this.definitionDataGridViewTextBoxColumn.Name = "definitionDataGridViewTextBoxColumn";
             this.definitionDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // en_word_listTableAdapter
+            // 
+            this.en_word_listTableAdapter.ClearBeforeFill = true;
+            // 
+            // waitLable
+            // 
+            this.waitLable.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.waitLable.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.waitLable.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.waitLable.Location = new System.Drawing.Point(13, 176);
+            this.waitLable.Name = "waitLable";
+            this.waitLable.Size = new System.Drawing.Size(229, 31);
+            this.waitLable.TabIndex = 0;
+            this.waitLable.Text = "Please wait...";
+            this.waitLable.Visible = false;
             // 
             // StartForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(650, 491);
+            this.ClientSize = new System.Drawing.Size(699, 491);
+            this.Controls.Add(this.waitLable);
             this.Controls.Add(this.itemDataGridView);
             this.Controls.Add(this.itemBindingNavigator);
             this.Controls.Add(this.searchGroupBox);
@@ -292,9 +310,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.itemBindingNavigator)).EndInit();
             this.itemBindingNavigator.ResumeLayout(false);
             this.itemBindingNavigator.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.itemDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.eng_dict_ds)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.enwordlistBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.eng_dict_ds)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itemDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -303,7 +321,6 @@
         #endregion
 
         private System.Windows.Forms.GroupBox searchGroupBox;
-        private System.Windows.Forms.CheckBox similarCheckBox;
         private System.Windows.Forms.Button searchItemButton;
         private System.Windows.Forms.TextBox searchItemTextBox;
         private System.Windows.Forms.Label searchItemLable;
@@ -324,5 +341,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn wordDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn wordtypeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn definitionDataGridViewTextBoxColumn;
+        private System.Windows.Forms.ComboBox searchComboBox;
+        private System.Windows.Forms.Label waitLable;
     }
 }
